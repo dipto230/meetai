@@ -73,7 +73,7 @@ export const DashboardUserButton = () => {
           <DrawerTitle>
             {data.user.name}
           </DrawerTitle>
-            <DrawerDescription>{Drawer.user.email}</DrawerDescription>
+            <DrawerDescription>{data.user.email}</DrawerDescription>
             
           </DrawerHeader>
           <DrawerFooter>
