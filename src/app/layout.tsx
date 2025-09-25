@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { NuqsAdapter } from "nuqs/adapters/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "react-hot-toast"; 
+import { Toaster } from "react-hot-toast";
 
 import { TRPCReactProvider } from "@/trpc/client";
 
@@ -27,12 +28,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <TRPCReactProvider>{children}
-          <Toaster position="top-right" />
-        </TRPCReactProvider>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <NuqsAdapter>
+          <TRPCReactProvider>
+            {children}
+            <Toaster position="top-right" />
+          </TRPCReactProvider>
+        </NuqsAdapter>
       </body>
     </html>
   );
