@@ -24,6 +24,7 @@ export const agentsRouter = createTRPCRouter({
   }),
 
   // Create a new agent (requires authentication)
+  // Create a new agent (requires authentication)
   create: protectedProcedure
     .input(agentInsertSchema)
     .mutation(async ({ input, ctx }) => {
@@ -35,6 +36,7 @@ export const agentsRouter = createTRPCRouter({
         })
         .returning();
 
-      return createdAgent;
+      return createdAgent[0]; // ✅ return single object instead of array
     }),
+
 });
