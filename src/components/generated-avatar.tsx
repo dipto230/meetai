@@ -29,9 +29,14 @@ export const GeneratedAvatar = ({
     });
   }
 
+  // Convert SVG to data URI (v5+)
+  const svgDataUri = `data:image/svg+xml;utf8,${encodeURIComponent(
+    avatar.toString()
+  )}`;
+
   return (
     <Avatar className={cn(className)}>
-      <AvatarImage src={avatar.toDataUriSync()} alt="Avatar" />
+      <AvatarImage src={svgDataUri} alt="Avatar" />
       <AvatarFallback>{seed.charAt(0).toUpperCase()}</AvatarFallback>
     </Avatar>
   );

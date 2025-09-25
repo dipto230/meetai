@@ -1,6 +1,8 @@
 "use client";
 
+import { ErrorState } from "@/components/error-state";
 import { LoadingState } from "@/components/loading-state";
+import { Button } from "@/components/ui/button";
 import { trpc } from "@/trpc/client";
 
 export const AgentsView = () => {
@@ -8,15 +10,27 @@ export const AgentsView = () => {
 
   if (isLoading) return <LoadingState />;
 
-  return <div>{JSON.stringify(data, null, 2)}</div>;
+  return (
+    <div>
+      {JSON.stringify(data, null, 2)}
+    </div>
+  );
 };
 
 export const AgentsViewLoading = () => {
   return (
-    <LoadingState
-      title="Loading Agents"
-      description="This may take a few seconds."
+    <div>
+      <Button>Some action</Button>
+      {"Loading..."}
+    </div>
+  );
+};
+
+export const AgentsViewError = () => {
+  return (
+    <ErrorState
+      title="Error Loading Agents"
+      description="Something went wrong"
     />
   );
 };
-    
